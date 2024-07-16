@@ -20,5 +20,5 @@ from user import views
 app_name ='user'
 
 urlpatterns = [
-    path('/user',views.signup,name='register'),
+    path('user',views.signup,name='register'),
 ]

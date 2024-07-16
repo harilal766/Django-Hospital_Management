@@ -17,9 +17,9 @@ Including another URLconf
 from django.urls import path
 from consultation import views
 
-app_name = 'consultation'
+app_name = "consultation"
 
 urlpatterns = [
     path('',views.home,name='home'),
-    path('/make appointment',views.make_appointment,name='make_appointment'),
+    path('make_appointment',views.make_appointment,name='make_appointment'),
 ]

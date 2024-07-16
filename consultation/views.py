@@ -8,6 +8,7 @@ def home(request):
 
 
 def make_appointment(request):
+    '''
     if request.method == "POST":
         name = request.POST['name']
         email = request.POST['email']
@@ -19,9 +20,10 @@ def make_appointment(request):
         # Adding datas to respective tables and saving them
         patient = Patient.objects.create(name=name,email=email,phone=phone)
         patient.save()
-        '''
         appointment = Appointment.objects.create(date=date,department=department,message=message)
-        
         appointment.save()
-        '''
-    return render(request,'home.html')
+    else:
+        pass
+    '''
+
+    return render(request,'book appointment.html')
