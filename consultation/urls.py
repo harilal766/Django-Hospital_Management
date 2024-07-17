@@ -21,5 +21,5 @@ app_name = "consultation"
 
 urlpatterns = [
     path('',views.home,name='home'),
-    path('make_appointment',views.make_appointment,name='make_appointment'),
+    path('make_appopintment',views.make_appointment,name='make_appointment'),
 ]

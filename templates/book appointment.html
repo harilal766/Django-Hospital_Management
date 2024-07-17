@@ -4,10 +4,9 @@
     {% csrf_token %}
     <!-- SECTION TITLE -->
     <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
-         <h2>Make an appointment</h2>
     </div>
 
-    <div class="wow fadeInUp" data-wow-delay="0.8s">
+    <div class="wow fadeInUp" data-wow-delay="0.5s">
          <div class="col-md-6 col-sm-6">
               <label for="name">Name</label>
               <input type="text" class="form-control" id="name" name="name" placeholder="Full Name">
@@ -18,12 +17,18 @@
               <input type="email" class="form-control" id="email" name="email" placeholder="Your Email">
          </div>
 
-         <div class="col-md-6 col-sm-6">
+         <div class="col-md-4 col-sm-4">
               <label for="date">Select Date</label>
-              <input type="date" name="date" value="" class="form-control">
+              <input type="date" name="date" class="form-control">
          </div>
 
-         <div class="col-md-6 col-sm-6">
+         <div class="col-md-4 col-sm-4">
+               <label for="time">Select Time</label>
+               <input type="time" name="time"  class="form-control">
+         </div>
+     </div>
+
+         <div class="col-md-4 col-sm-4">
               <label for="select">Select Department</label>
               <select class="form-control">
                    {% for i in depts %}
