@@ -18,10 +18,13 @@ def make_appointment(request):
         phone = request.POST.get('phone')
         message = request.POST.get('message')
         # Adding datas to respective tables and saving them
-        patient = Patient.objects.create(name=name,email=email,phone=phone)
-        patient.save()
-        appointment = Appointment.objects.create(date=date,department=department,message=message,time=time)
-        appointment.save()
+        new_patient = Patient.objects.create(name=name,email=email,phone=phone)
+        new_patient.save()
+
+        created_patient = Patient.objects.get(id=new_patient.id)
+        new_appointment = Appointment.objects.create(patient=created_patient,date=date,department=department,
+                                                 message=message,time=time)
+        new_appointment.save()
     else:
         pass
     

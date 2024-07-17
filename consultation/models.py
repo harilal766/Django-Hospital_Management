@@ -45,4 +45,4 @@ class Appointment(models.Model):
     department = models.ForeignKey(Department,on_delete=models.CASCADE,blank=True,null=True)
     message = models.TextField(max_length=1000,default='')
     def __str__(self):
-        return self.date
+        return f'{self.patient.name} - {self.date}'
