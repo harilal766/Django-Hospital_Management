@@ -237,7 +237,7 @@
 
                <div class="col-md-6 col-sm-6">
                     <!-- CONTACT FORM HERE -->
-                    <form id="appointment-form" role="form" method="POST" action="#">
+                    <form id="appointment-form" role="form" method="POST">
                          {% csrf_token %}
                          <!-- SECTION TITLE -->
                          <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
@@ -261,10 +261,15 @@
                               </div>
 
                               <div class="col-md-6 col-sm-6">
+                                   <label for="time">Select Time</label>
+                                   <input type="time" name="time"  class="form-control">
+                             </div>
+
+                              <div class="col-md-6 col-sm-6">
                                    <label for="select">Select Department</label>
                                    <select class="form-control">
                                         {% for i in depts %}
-                                        <option>{{i.name}}</option>
+                                        <option name="department">{{i.name}}</option>
                                         {% endfor %}
                                    </select>
                               </div>
