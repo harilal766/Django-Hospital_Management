@@ -9,6 +9,7 @@ def home(request):
 
 def make_appointment(request):
     departments = Department.objects.all()
+    
     if request.method == "POST":
         name = request.POST.get('name')
         email = request.POST.get('email')
@@ -18,15 +19,11 @@ def make_appointment(request):
         phone = request.POST.get('phone')
         message = request.POST.get('message')
         # Adding datas to respective tables and saving them
+
+        # add condition to make sure phone number is unique 
         new_patient = Patient.objects.create(name=name,email=email,phone=phone)
         new_patient.save()
-
-        created_patient = Patient.objects.get(id=new_patient.id)
-        new_appointment = Appointment.objects.create(patient=created_patient,date=date,department=department,
+        new_appointment = Appointment.objects.create(patient=new_patient,date=date,department=department,
                                                  message=message,time=time)
         new_appointment.save()
-    else:
-        pass
-    
-
     return render(request,'book appointment.html',{'depts':departments})
