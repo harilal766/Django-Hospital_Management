@@ -21,8 +21,11 @@ def make_appointment(request):
         # Adding datas to respective tables and saving them
 
         # add condition to make sure phone number is unique 
-        new_patient = Patient.objects.create(name=name,email=email,phone=phone)
-        new_patient.save()
+        try:
+            new_patient = Patient.objects.create(name=name,email=email,phone=phone)
+            new_patient.save()
+        except:
+            pass
         new_appointment = Appointment.objects.create(patient=new_patient,date=date,department=department,
                                                  message=message,time=time)
         new_appointment.save()
