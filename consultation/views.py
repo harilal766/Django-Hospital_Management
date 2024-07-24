@@ -24,9 +24,11 @@ def make_appointment(request):
         try:
             new_patient = Patient.objects.create(name=name,email=email,phone=phone)
             new_patient.save()
+            depart = Department.objects.get()
         except:
             pass
         new_appointment = Appointment.objects.create(patient=new_patient,date=date,department=department,
                                                  message=message,time=time)
         new_appointment.save()
+    #return render(request,'home.html',{'depts':departments})
     return render(request,'book appointment.html',{'depts':departments})
