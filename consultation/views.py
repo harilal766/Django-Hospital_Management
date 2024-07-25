@@ -8,27 +8,27 @@ def home(request):
 
 
 def make_appointment(request):
-    departments = Department.objects.all()
-    
+    departments = Department.objects.all()  
     if request.method == "POST":
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        date = request.POST.get('date')
-        time = request.POST.get('time')
-        department = request.POST.get('department')
-        phone = request.POST.get('phone')
-        message = request.POST.get('message')
-        # Adding datas to respective tables and saving them
-
-        # add condition to make sure phone number is unique 
+        name_input = request.POST.get('name')
+        email_input = request.POST.get('email')
+        date_input = request.POST.get('date')
+        time_input = request.POST.get('time')
+        dept_input = request.POST.get('department')
+        phone_input = request.POST.get('phone')
+        message_input = request.POST.get('message')
         try:
-            new_patient = Patient.objects.create(name=name,email=email,phone=phone)
-            new_patient.save()
-            depart = Department.objects.get()
-        except:
+            dept = Department.objects.get(name=dept_input).id
+        except: 
             pass
-        new_appointment = Appointment.objects.create(patient=new_patient,date=date,department=department,
-                                                 message=message,time=time)
-        new_appointment.save()
-    #return render(request,'home.html',{'depts':departments})
-    return render(request,'book appointment.html',{'depts':departments})
+        finally:
+            new_patient = Patient.objects.create(name=name_input,email=email_input,phone=phone_input)
+            new_patient.save()
+
+            new_appointment = Appointment.objects.create(patient=new_patient,date=date_input,department=dept,
+                                                 message=message_input,time=time_input)
+            new_appointment.save()
+    context = {'depts':departments}
+        
+    #return render(request_input,'home.html'_input,{'depts':departments})
+    return render(request,'book appointment.html',context)

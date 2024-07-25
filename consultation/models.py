@@ -32,7 +32,7 @@ class Patient(models.Model):
     doctor = models.ForeignKey(Doctor,on_delete=models.CASCADE,blank=True,null=True)
     occupation = models.CharField(max_length=200,blank=True,null=True)
     address = models.CharField(max_length=1000,default = None,blank=True,null=True,unique=True)
-    phone = models.CharField(max_length=14,default = '+91 12345678910',blank=True,null=True,unique=True)
+    phone = models.CharField(max_length=14,default = '+91 12345678910',blank=True,null=True)
     email = models.CharField(max_length=40,blank=True,default='exapmple@gmail.com')
     def __str__(self):
         return self.name
