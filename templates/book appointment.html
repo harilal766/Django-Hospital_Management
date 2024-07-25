@@ -32,7 +32,7 @@
 
                               <div class="col-md-6 col-sm-6">
                                    <label for="date">Select Date</label>
-                                   <input type="date" name="date" value="" class="form-control" required>
+                                   <input type="date" name="date" value="" class="form-control" required onchange="dateValidation()">
                               </div>
 
                               <div class="col-md-6 col-sm-6">
@@ -63,4 +63,10 @@
           </div>
      </div>
 </section>
+
+<script>
+     const date_input = document.getElementsById("date");
+     const output = document.getElementsById("message");
+     document.getElementById("message").innerHTML(date_input);
+</script>
 {% endblock %}
