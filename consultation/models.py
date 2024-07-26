@@ -13,15 +13,26 @@ class Department(models.Model):
     name = name = models.CharField(max_length=20)
     def __str__(self):
         return self.name
-
-class Doctor(models.Model):
+    
+class Healthcare_professional(models.Model):
     name = models.CharField(max_length=20)
-    department = models.ForeignKey(Department,on_delete = models.CASCADE)
     joining_date = models.DateField()
     phone = models.CharField(max_length=12,default='1234')
     email = models.CharField(max_length=40,blank=True,default='exapmple@gmail.com')
+    class Meta:
+        abstract = True
     def __str__(self):
         return self.name
+
+
+class Doctor(Healthcare_professional):
+    department = models.ForeignKey(Department,on_delete = models.CASCADE,default='medicine')
+
+class Nurse(Healthcare_professional):
+    pass
+
+class Pharmacist(Healthcare_professional):
+    pass
 
 
 class Patient(models.Model):
