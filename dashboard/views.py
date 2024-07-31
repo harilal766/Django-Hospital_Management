@@ -8,7 +8,6 @@ def dashboard(request):
     nurses = Nurse.objects.all().count
     pharmacists = Pharmacist.objects.all().count
     patients = Patient.objects.all().count
-
     appoint = Appointment.objects.all()
 
     context = {
