@@ -1,7 +1,10 @@
-
+.row {
+    padding:30px;
+}
 .card {
     max-width: 180px;
     background-color:aliceblue;
+    margin: 0.4em;
 
 }
 

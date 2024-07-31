@@ -24,6 +24,8 @@ http://www.tooplate.com/view/2098-health
      <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
      <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
 
+     
+
      <!-- MAIN CSS -->
      <link rel="stylesheet" href="{% static 'css/style.css' %}">
      <!--Font awesome-->
@@ -88,7 +90,18 @@ http://www.tooplate.com/view/2098-health
                          <li><a href="7" class="smoothScroll">News</a></li>
                          <li><a href="#google-map" class="smoothScroll">Contact</a></li>
                          <li><a href="#google-map" class="smoothScroll">Logout</a></li>
-                         <li class="appointment-btn"><a href="{% url 'consultation:make_appointment' %}">Make an appointment</a></li>
+                         <!--Drop down start-->
+                         <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="{% url 'consultation:make_appointment' %}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Dropdown
+                              </a>
+                              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                   {% for i in depts %}
+                                        <li><a class="dropdown-item" href="#">{{i.name}}</a></li>
+                                   {% endfor %}
+                              </ul>
+                         </li>
+                         <!-- Drop down end-->
                          <li class="appointment-btn"><a href="#appointment">Signup</a></li>
                          <li class="appointment-btn"><a href="#appointment">Signin</a></li>
                     </ul>
