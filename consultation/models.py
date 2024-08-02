@@ -1,12 +1,19 @@
 from django.db import models
 
 # Create your models here.
-class Choices(models.Model):
+class Choice(models.Model):
     gender_choices = (
         ('M', 'Male'),
         ('F',"Female"),
         ('T','Transgender')
-    )  
+    )
+class Status(models.Model):
+    appoint_status = (
+        ('Sc', 'Scheduled'),
+        ('Co', 'Completed'),
+        ('Ca', 'Cancelled')
+    )
+
 
 
 class Department(models.Model):
@@ -27,6 +34,7 @@ class Healthcare_professional(models.Model):
 
 class Doctor(Healthcare_professional):
     department = models.ForeignKey(Department,on_delete = models.CASCADE,default='medicine')
+    availability = models.DurationField()
 
 class Nurse(Healthcare_professional):
     pass
@@ -38,7 +46,7 @@ class Pharmacist(Healthcare_professional):
 class Patient(models.Model):
     name = models.CharField(max_length=20)
     photo = models.ImageField(upload_to='Patient/Photo',blank=True,null=True)
-    gender = models.CharField(max_length=1, choices=Choices.gender_choices,default='Prefer Not to say')
+    gender = models.CharField(max_length=1, choices=Choice.gender_choices,default='Prefer Not to say')
     age = models.IntegerField(default=None,blank=True,null=True)
     doctor = models.ForeignKey(Doctor,on_delete=models.CASCADE,blank=True,null=True)
     occupation = models.CharField(max_length=200,blank=True,null=True)
@@ -55,5 +63,6 @@ class Appointment(models.Model):
     time = models.TimeField(default='',blank=True,null=True)
     department = models.ForeignKey(Department,on_delete=models.CASCADE,blank=True,null=True)
     message = models.TextField(max_length=1000,default='')
+    status = models.CharField(max_length=2, choices=Status.appoint_status, null=True,)
     def __str__(self):
         return f'{self.patient.name} - {self.date}'
