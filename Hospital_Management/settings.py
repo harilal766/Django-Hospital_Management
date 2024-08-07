@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #Apps
-    'consultation','dashboard',
+    'consultation','dashboard','userauth',
     # allauth 
     'allauth','allauth.account',
     'allauth.socialaccount.providers.google',
