@@ -34,7 +34,7 @@ class Healthcare_professional(models.Model):
 
 class Doctor(Healthcare_professional):
     department = models.ForeignKey(Department,on_delete = models.CASCADE,default='medicine')
-    availability = models.DurationField()
+    availability = models.DurationField(default=None)
 
 class Nurse(Healthcare_professional):
     pass

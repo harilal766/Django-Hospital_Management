@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     #Apps
     'consultation','dashboard',
     # allauth 
-    'django.contrib.sites',
+    'allauth','allauth.account',
     # fontawesome
     'fontawesomefree',
 ]
@@ -63,10 +63,13 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    "django.contrib.sessions.middleware.SessionMiddleware",
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+     # Add the account middleware:
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 
@@ -94,6 +97,13 @@ TEMPLATES = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
