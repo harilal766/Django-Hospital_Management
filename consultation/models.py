@@ -48,6 +48,7 @@ class Patient(models.Model):
     photo = models.ImageField(upload_to='Patient/Photo',blank=True,null=True)
     gender = models.CharField(max_length=1, choices=Choice.gender_choices,default='Prefer Not to say')
     age = models.IntegerField(default=None,blank=True,null=True)
+    patient_id = models.CharField(max_length=10,default=None)
     doctor = models.ForeignKey(Doctor,on_delete=models.CASCADE,blank=True,null=True)
     occupation = models.CharField(max_length=200,blank=True,null=True)
     address = models.CharField(max_length=1000,default = None,blank=True,null=True,unique=True)

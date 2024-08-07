@@ -1,5 +1,13 @@
 from django.shortcuts import render
 from consultation.models import *
+import uuid, datetime
+
+
+# https://chatgpt.com/c/ae6bf9ec-a3e0-48f1-9f7e-7521885594a0
+def patient_id_generator(gender):
+    gender = gender[0]
+    return f'{gender}-'
+print(patient_id_generator('Male'))
 
 # Create your views here.
 def home(request):
@@ -11,6 +19,7 @@ def make_appointment(request):
     departments = Department.objects.all()  
     if request.method == "POST":
         name_input = request.POST.get('name')
+        gender_input = 'Male'
         email_input = request.POST.get('email')
         date_input = request.POST.get('date')
         time_input = request.POST.get('time')
@@ -22,7 +31,7 @@ def make_appointment(request):
         except: 
             pass
         finally:
-            new_patient = Patient.objects.create(name=name_input,email=email_input,phone=phone_input)
+            new_patient = Patient.objects.create(name=name_input,patient_id=patient_id_generator(gender_input),email=email_input,phone=phone_input)
             new_patient.save()
 
             new_appointment = Appointment.objects.create(patient=new_patient,date=date_input,department=dept,
