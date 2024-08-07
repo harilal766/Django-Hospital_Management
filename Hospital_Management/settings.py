@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'consultation','dashboard',
     # allauth 
     'allauth','allauth.account',
+    'allauth.socialaccount.providers.google',
     # fontawesome
     'fontawesomefree',
 ]
@@ -51,11 +52,7 @@ INSTALLED_APPS = [
 SITE_ID = 1
 
 
-# Allauth configuration
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+
 
 
 MIDDLEWARE = [
@@ -72,10 +69,23 @@ MIDDLEWARE = [
     "allauth.account.middleware.AccountMiddleware",
 ]
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ACCOUNT_EMAIL_VERIFICATION = "none"
 
 
-
-
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+            'client_id': '123',
+            'secret': '456',
+            'key': ''
+        }
+    }
+}
 
 
 ROOT_URLCONF = 'Hospital_Management.urls'
