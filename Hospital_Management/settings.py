@@ -72,6 +72,8 @@ MIDDLEWARE = [
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ACCOUNT_EMAIL_VERIFICATION = "none"
 
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 
 # Provider specific settings
 SOCIALACCOUNT_PROVIDERS = {
