@@ -31,14 +31,14 @@ def make_appointment(request):
         except: 
             pass
         finally:
-            new_patient = Patient.objects.create(name=name_input,patient_id=patient_id_generator(gender_input),email=email_input,phone=phone_input)
+            new_patient = Patient.objects.create(name=name_input,patient_id='M199811',email=email_input,phone=phone_input)
             new_patient.save()
 
-            new_appointment = Appointment.objects.create(patient=new_patient,date=date_input,department=dept,
+            new_appointment = Appointment.objects.create(patient=new_patient,date=date_input,department="oncology",
                                                  message=message_input,time=time_input)
             new_appointment.save()
+        return render(request,'appoint_confirmation.html')
     context = {'depts':departments}
-        
     #return render(request_input,'home.html'_input,{'depts':departments})
     return render(request,'book appointment.html',context)
 
