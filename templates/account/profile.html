@@ -1,0 +1,6 @@
+{% extends "account/base.html" %}
+{% load allauth %}
+{% block content %}
+    <h1>Profile</h1>
+    <p>Your profile - {{ request.user.first_name|default:'' }}</p>
+{% endblock content %}
