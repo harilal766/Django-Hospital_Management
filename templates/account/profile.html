@@ -4,5 +4,5 @@
     {% element h1 %}
         Profile
     {% endelement %}
-    <p>Your profile</p>
+    <p>Your profile{{ request.user.first_name|default:'' }}</p>
 {% endblock content %}
