@@ -7,7 +7,7 @@ http://www.tooplate.com/view/2098-health
 */
 :root {
   --light_gray : white;
-  --gray :393939;
+  --gray :#393939;
   --light_green : #a5c422;
 }
   @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600');
@@ -304,6 +304,15 @@ http://www.tooplate.com/view/2098-health
     margin-right: 5px;
   }
 
+  /*Nav bar dropdown*/
+  .dropdown .content {
+    display: None;
+  }
+
+  .dropdown:hover .content {
+    display: inline;
+    color :#1da1f2;
+  }
   
 
 

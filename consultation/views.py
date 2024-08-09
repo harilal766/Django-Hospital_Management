@@ -15,8 +15,8 @@ def home(request):
     return render(request,'home.html',{'depts':departments})
 
 
-def make_appointment(request):
-    departments = Department.objects.all()  
+def make_appointment(request,dslug):
+    departments = Department.objects.get(slug=dslug)  
     if request.method == "POST":
         name_input = request.POST.get('name')
         gender_input = 'Male'
@@ -37,8 +37,6 @@ def make_appointment(request):
             new_appointment = Appointment.objects.create(patient=new_patient,date=date_input,department="oncology",
                                                  message=message_input,time=time_input)
             new_appointment.save()
-        return render(request,'appoint_confirmation.html')
     context = {'depts':departments}
-    #return render(request_input,'home.html'_input,{'depts':departments})
     return render(request,'book appointment.html',context)
 

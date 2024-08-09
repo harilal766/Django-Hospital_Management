@@ -4,4 +4,7 @@ from consultation.models import *
 admin.site.register(Patient)
 admin.site.register(Doctor)
 admin.site.register(Appointment)
-admin.site.register(Department)
+class DepartmentAdmin(admin.ModelAdmin):
+    list_display=['name','slug']
+    prepopulated_fields = {'slug':('name',)}
+admin.site.register(Department,DepartmentAdmin)

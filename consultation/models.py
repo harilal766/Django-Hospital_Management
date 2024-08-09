@@ -17,7 +17,8 @@ class Status(models.Model):
 
 
 class Department(models.Model):
-    name = name = models.CharField(max_length=20)
+    name = models.CharField(max_length=20)
+    slug = models.SlugField(max_length=250, unique=True)
     def __str__(self):
         return self.name
     
