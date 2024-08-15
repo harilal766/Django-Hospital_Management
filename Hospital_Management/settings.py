@@ -51,6 +51,7 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
+WSGI_APPLICATION = 'myproject.wsgi.application'
 
 
 
