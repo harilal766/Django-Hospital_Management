@@ -75,6 +75,15 @@ MIDDLEWARE = [
     "allauth.account.middleware.AccountMiddleware",
 ]
 
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://django-hospitalmanagement-production.up.railway.app',
+    'https://yourdomain.com',
+]
+
+
+
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ACCOUNT_EMAIL_VERIFICATION = "none"
 
