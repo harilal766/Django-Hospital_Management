@@ -26,7 +26,12 @@ SECRET_KEY = 'django-insecure-qoq(+!lo!k_nes-e^d-y2)18+ogajkv@zp+75&v_yjyf895x4l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+'''
 ALLOWED_HOSTS = ["*"]
+'''
+ALLOWED_HOSTS = [
+    'django-hospitalmanagement-production.up.railway.app',
+]
 
 # Media directory
 MEDIA = '/media/'
