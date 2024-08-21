@@ -27,6 +27,7 @@ SECRET_KEY = 'django-insecure-qoq(+!lo!k_nes-e^d-y2)18+ogajkv@zp+75&v_yjyf895x4l
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    '127.0.0.1',
     'django-hospitalmanagement-production.up.railway.app',
 ]
 
@@ -45,7 +46,9 @@ INSTALLED_APPS = [
     #Apps
     'consultation','dashboard','userauth',
     # allauth 
-    'allauth','allauth.account',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     # fontawesome
     'fontawesomefree',
@@ -88,16 +91,12 @@ LOGIN_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 
 # Provider specific settings
-SOCIALACCOUNT_PROVIDERS = {
+SSOCIALACCOUNT_PROVIDERS = {
     'google': {
-        # For each OAuth based provider, either add a ``SocialApp``
-        # (``socialaccount`` app) containing the required client
-        # credentials, or list them here:
-        'APP': {
-            'client_id': '123',
-            'secret': '456',
-            'key': ''
-        }
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
     }
 }
 
