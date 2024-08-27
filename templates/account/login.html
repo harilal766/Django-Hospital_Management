@@ -1,8 +1,22 @@
-{% extends "account/base.html" %}
+{% extends "index.html" %}
+{% load socialaccount %}
 {% block content %}
 
-<form method="POST">
+<form method="POST" class="container">
+    <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
+        <h2>Login</h2>
+   </div>
     {% csrf_token %}
     {{ form.as_p }}
+    <input type="submit" value="Login">
 </form>
+
+{% if providers %}
+    {% for provider in providers %}
+    <a href="{% provider_login_url 'https://www.google.com/accounts/o8/id' %}">{{ provider.name }}</a>
+    {% endfor %}
+{% else %}
+    <p>No social providers configured.</p>
+{% endif %}
+
 {% endblock %}

@@ -1,6 +1,14 @@
 {% extends "index.html" %}
 {% load static %}
-<div class="container" style="display: flex; justify-content: center;">
-    {% block content %}
-    {% endblock %}
-</div>
+
+<section id="appointment">
+    <div class="container" style="display: flex; justify-content: center;">
+        <div class="row">
+            <div class="col-mod-12">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</section>
+
