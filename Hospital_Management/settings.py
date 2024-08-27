@@ -83,22 +83,55 @@ CSRF_TRUSTED_ORIGINS = [
 
 
 
+SOCIALACCOUNT_ADAPTER = "allauth.socialaccount.adapter.DefaultSocialAccountAdapter"
+SOCIALACCOUNT_AUTO_SIGNUP = True
+SOCIALACCOUNT_EMAIL_AUTHENTICATION = True
+
+SOCIALACCOUNT_FORMS = {
+    'disconnect': 'allauth.socialaccount.forms.DisconnectForm',
+    'signup': 'allauth.socialaccount.forms.SignupForm',
+}
+SOCIALACCOUNT_LOGIN_ON_GET = False
+SOCIALACCOUNT_REQUESTS_TIMEOUT = 5
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ACCOUNT_EMAIL_VERIFICATION = "none"
-
+SOCIALACCOUNT_ONLY = False
+SOCIALACCOUNT_OPENID_CONNECT_URL_PREFIX = 'oidc'
+SOCIALACCOUNT_QUERY_EMAIL = 'ACCOUNT_EMAIL_REQUIRED'
+SOCIALACCOUNT_SOCIALACCOUNT_STR = str
+SOCIALACCOUNT_STORE_TOKENS = False
 LOGIN_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 
-# Provider specific settings
-SSOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'SCOPE': [
-            'profile',
-            'email',
+# Social account provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    "google": {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        "APPS": [
+            {
+                "client_id": "123",
+                "secret": "456",
+                "key": ""
+            },
         ],
+        # These are provider-specific settings that can only be
+        # listed here:
+        "SCOPE": [
+            "profile",
+            "email",
+        ],
+        "AUTH_PARAMS": {
+            "access_type": "online",
+        },
     }
 }
+
+SOCIALACCOUNT_EMAIL_AUTHENTICATION_AUTO_CONNECT = True
+SOCIALACCOUNT_EMAIL_VERIFICATION = 'ACCOUNT_EMAIL_VERIFICATION'
+SOCIALACCOUNT_EMAIL_VERIFICATION = 'ACCOUNT_EMAIL_REQUIRED'
 
 
 ROOT_URLCONF = 'Hospital_Management.urls'
