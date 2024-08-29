@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
-    'django-hospitalmanagement-production.up.railway.app',
+    'django-hospitalmanagement.up.railway.app',
 ]
 
 # Media directory
