@@ -84,12 +84,13 @@
                          <li><a href="#google-map" class="smoothScroll">Contact</a></li>
                          {% if user.is_authenticated %}
                          <li class="dropdown"><a>Book Appointment</a>
-                              <div class="content">
+                              <div class="content" style="border-color: aqua;">
                                    {% for i in depts %}
-                                   <a href="{% url 'consultation:make_appointment' i.slug %}">{{i.name}}</a><br>
+                                        <a href="{% url 'consultation:make_appointment' i.slug %}">{{i.name}}</a><br>
                                    {% endfor %}
                               </div>
                          </li>
+                         <li class="dropdown"><a>Developer</a>
                          <li class="appointment-btn"><a href="{% url 'account_logout' %}" class="smoothScroll">Logout</a></li>
                          {% else %}
                          <!-- Drop down end-->
@@ -98,7 +99,6 @@
                          {% endif %}
                     </ul>
                </div>
- 
           </div>
      </section>
      {% block content %}
